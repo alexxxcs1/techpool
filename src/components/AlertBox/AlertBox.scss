@@ -1,0 +1,31 @@
+.AlertBox {
+    width: 356px;
+    min-height: 123px;
+    background: #eeeeee;
+    border-radius: 9px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .AlertValue{
+        width: 90%;
+        margin: 15px;
+        font-size: 22px;
+        color: #b3b3b3;
+    }
+    .Button {
+        width: 111px;
+        height: 30px;
+        background: #fff;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #b3b3b3;
+    }
+}

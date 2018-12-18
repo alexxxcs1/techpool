@@ -1,0 +1,52 @@
+.TopNavBox {
+    width: 100%;
+    // height: 165px;
+    // background: rgba($color: #000000, $alpha: 0.5);
+    position: fixed;
+    top: 0px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    .logotop {
+        width: 708px;
+        margin-top: 38px;
+        margin-bottom: 20px;
+    }
+
+    .HandleGroupButton {
+        width: 100%;
+        height: calc(165px - 46px - 38px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .ButtonGroup {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .Button {
+                margin: 38px;
+                // width: 43px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: #959fac;
+                pointer-events: all;
+                .iconbase {
+                    width: 43px;
+                    height: 43px;
+                }
+            }
+
+
+        }
+    }
+}

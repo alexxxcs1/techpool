@@ -1,0 +1,133 @@
+.WrongBox {
+    width: 385px;
+    height: 375px;
+    background: #fff;
+    border-radius: 5px;
+    // box-shadow: rgba($color: #fff, $alpha: 0.5) 15px 0 0, rgba($color: #fff, $alpha: 0.5) -15px 0 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 415px;
+        height: 390px;
+        background: rgba($color: #fff, $alpha: 0.5);
+        border-radius: 5px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+
+    .TitleBox {
+        width: 237px;
+        height: 47px;
+        margin-top: 12px;
+        position: relative;
+        filter: grayscale(200%);
+
+        .Tittleleft {
+            // width: 65px;
+            // height: 47px;
+            z-index: 1;
+            position: absolute;
+            width: 0;
+            height: 0;
+
+            left: 0px;
+            top: 9px;
+            border-top: solid #f66060 24px;
+            border-right: solid #f66060 52px;
+            border-bottom: solid #f66060 24px;
+            border-left: solid transparent 17px;
+            transform: translateX(-46px);
+            ;
+        }
+
+        .TittleValue {
+
+            width: 100%;
+            height: 100%;
+            background: #f66060;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: #333 0 0px 30px 0px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .Tittleright {
+            // width: 65px;
+            // height: 47px;
+            z-index: 1;
+            position: absolute;
+            width: 0;
+            height: 0;
+
+            right: 0px;
+            top: 9px;
+            border-top: solid #f66060 24px;
+            border-right: solid transparent 17px;
+            border-bottom: solid #f66060 24px;
+            border-left: solid #f66060 52px;
+            transform: translateX(46px);
+        }
+    }
+
+    .ResultBox {
+        width: 328px;
+        height: 132px;
+        margin-top: 12px;
+        // background: #000;
+        font-size: 31.77px;
+        // color: #f66060;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: #8f8f8f;
+    }
+
+    .ResultAnswer {
+        // width: 333px;
+        height: 100px;
+        color: #8f8f8f;
+
+        :nth-child(1) {
+            font-size: 24px;
+        }
+
+        :nth-child(2) {
+            font-size: 18px;
+        }
+    }
+
+    .NextButton {
+        width: 175px;
+        height: 49px;
+        filter: grayscale(200%);
+        border-radius: 25px;
+        background: linear-gradient(#f8c3c3 0%, #efb1b0 2%, #db7469 50%, #f6b1b9 99%, #f8c6d2 100%);
+        box-shadow: #b87636 0 0 0 1px inset, #f7d7c2 0 0 0 5px inset;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 28px;
+        font-weight: bold;
+    }
+}

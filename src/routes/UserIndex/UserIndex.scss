@@ -1,0 +1,115 @@
+.UserIndexBox {
+    margin: 0 auto;
+    width: 750px;
+    height: 100%;
+    // background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .UserBox {
+        width: 561px;
+        // height: 506px;
+        background-size: 100% 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        .Tittle {
+            width: 231px;
+            height: 79px;
+            background-size: 100% 100%;
+            transform: translateY(-12px);
+            font-size: 31px;
+            font-weight: bold;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .HeadshotBox {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .UserName {
+            color: #c27400;
+            font-size: 25px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .UserRole {
+            width: 120px;
+            height: 36px;
+            border-radius: 13px;
+            background: linear-gradient(#f7d7c2 0%, #eec9af 2%, #e4b585 50%, #f6c5b0 99%, #f8ccc4 100%);
+            box-shadow: #b87636 0 0 0 1px inset, #f7d7c2 0 0 0 5px inset;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .UserInfoDetial{
+            width: 100%;
+            height: 262px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .DetialTittle{
+                width: 95%;
+                flex-shrink: 0;
+                margin: 0 auto;
+                font-weight: bold;
+                :nth-child(1){
+                    width: 28px;
+                    margin-right: 28px;
+                }
+                :nth-child(2){
+                    font-size: 26px;
+                }
+                :nth-child(3){
+                    color: #cbcbcb;
+                }
+            }
+            .Content{
+                width: 95%;
+                height: 100%;
+                flex-grow: 1;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: center;
+                .BaseBox{
+                    width: 33%;
+                    height: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    div:nth-child(1){
+                        margin-top: 10px;
+                        color: #c27400;
+                        font-weight: bold;
+                    }
+                    div:nth-child(2){
+                        margin-top: 18px;
+                        color: #888888;
+                    }
+                }
+            }
+        }
+    }
+}

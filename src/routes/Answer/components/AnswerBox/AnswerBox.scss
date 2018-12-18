@@ -1,0 +1,97 @@
+.AnswerBox {
+    width: 652px;
+    // height: 677px;
+    background: rgba($color: #ece5d3, $alpha: 0.8);
+    box-shadow: #dfd8c6 0 0 30px 5px inset;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .TittleIcon {
+        width: 207px;
+        height: 71px;
+        background-size: 100% 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        font-weight: bold;
+        transform: translateY(-50%);
+    }
+
+    .QuestionTittle {
+        width: 627px;
+        min-height: 72px;
+        // word-break: break-all;
+        font-size: 20.55px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .QuestionOption {
+        width: 543px;
+        min-height: 428px;
+        // background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 32px;
+
+        .OptionBox {
+            flex-grow: 1;
+            margin: 12px 0;
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .OptionKey {
+                width: 32px;
+                flex-shrink: 0;
+                // flex-grow: 1;
+                height: 100%;
+                transition: color 0.2s;
+            }
+
+            .OptionKeyValue {
+                flex-grow: 1;
+                width: 100%;
+                // height: 60px;
+                transition: color 0.2s;
+
+            }
+        }
+
+        .actOption {
+            color: #d95531;
+            text-shadow: #fff 0 0 2px;
+        }
+    }
+    .QuestionNumber{
+        width: 543px;
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 32px;
+    }
+}
+.nextQuestion {
+    margin-top: 20px;
+    width: 175px;
+    height: 49px;
+    border-radius: 25px;
+    background: linear-gradient(#f7d7c2 0%, #eec9af 2%, #e4b585 50%, #f6c5b0 99%, #f8ccc4 100%);
+    box-shadow: #b87636 0 0 0 1px inset, #f7d7c2 0 0 0 5px inset;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+}

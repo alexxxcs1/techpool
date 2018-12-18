@@ -1,0 +1,76 @@
+.RoleRuleBox {
+    width: 385px;
+    height: 375px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 415px;
+        height: 390px;
+        background: rgba($color: #fff, $alpha: 0.5);
+        border-radius: 5px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+
+    .closebutton{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        // background: #000;
+        background: linear-gradient(#edd4ac 0%,#e4c680 49%,#deba6f 50%,#f6d2ad 100%);
+        box-shadow: #e0c38f 0 0 0 2px inset;
+
+        &::after {
+            position: absolute;
+            content: '';
+            width: 16px;
+            height: 2px;
+            background: rgba($color: #fff, $alpha: 1);
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            width: 16px;
+            height: 2px;
+            background: rgba($color: #fff, $alpha: 1);
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
+        
+    }
+
+    .Tittle{
+        width: 148px;
+        height: 51px;
+        margin-bottom: 30px;
+        color: #fff;
+        background-size: 100% 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+    .roleimg{
+        width: 335px;
+    }
+}

@@ -1,0 +1,127 @@
+.Box {
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .cateGroupBox {
+        // width: 247px;
+        height: 46px;
+        background: #cbcbcb;
+        position: absolute;
+        top: 0px;
+        transform: translateY(-60px);
+        border-radius: 23px;
+        box-shadow: #333 0 0 5px inset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .cateButton {
+            width: 123px;
+            height: 46px;
+            color: #f5991e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        .actbutton {
+            background: #f2981e;
+            box-shadow: rgba($color: #fff, $alpha: 0.5) 5px 5px 5px inset, rgba($color: #333, $alpha: 0.5) -5px -5px 5px inset;
+            border-radius: 23px;
+            color: #fff;
+        }
+    }
+
+    .RegionButtonGroup {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .RegionButton {
+            border-radius: 27px;
+            padding: 0 20px;
+            background: linear-gradient(#f7d7c2 0%, #eec9af 2%, #e4b585 50%, #f6c5b0 99%, #f8ccc4 100%);
+            box-shadow: #f7d7c2 6px 6px 0 inset, #b87636 -6px -6px 0 inset;
+            // box-shadow: #b87636 0 0 0 1px inset, #f7d7c2 0 0 0 5px inset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 5px 0px;
+            transition: box-shadow 0.2s;
+        }
+
+        .actRegionButton {
+            box-shadow: #b87636 6px 6px 0 inset, #f7d7c2 -6px -6px 0 inset;
+        }
+    }
+
+    .Tittle {
+        width: 231px;
+        height: 79px;
+        background-size: 100% 100%;
+        transform: translateY(-9px);
+        font-size: 31px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .TabbleBody {
+        width: 100%;
+
+        max-height: 500px;
+
+        .TableContent {
+            width: 100%;
+            max-height: 500px;
+            overflow: auto;
+        }
+
+        .RowBase {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4px 0px;
+        }
+
+        .ColumnBase {
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .HeadIcon {
+            width: 153px;
+            height: 44px;
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .RowIcon {
+            width: 209px;
+            height: 44px;
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
