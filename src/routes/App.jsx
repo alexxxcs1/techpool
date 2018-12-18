@@ -98,7 +98,7 @@ class App extends Component {
         )}
         {window.location.hash != "#/login" ? <TopNav /> : ""}
         <HashRouter>
-          <div style={{ height: "100%" }}>
+          <div style={{ height: "100%"}}>
             <Switch>
               {/* 登录绑定 */}
 
