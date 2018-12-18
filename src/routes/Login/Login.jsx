@@ -36,7 +36,7 @@ export class Login extends Component {
         if (res.code == 200) {
           this.context.setUserInfo(res.result);
           if (res.result.is_user == 1) {
-            window.location.hash = "/home";
+            window.location.hash = "/";
           }
         }
       },

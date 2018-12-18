@@ -38,7 +38,7 @@ export class TopNav extends Component {
               style={{ justifyContent: "flex-start" }}>
               <div
                 className={style.Button}
-                onClick={this.JumpUrl.bind(this, "/home")}>
+                onClick={this.JumpUrl.bind(this, "/")}>
                 <img src={returnbutton} className={style.iconbase} alt="" />
                 返回首页
               </div>

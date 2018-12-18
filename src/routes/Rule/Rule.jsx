@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import style from './Rule.scss'
 import button from 'assest/button.png'
+import rule from 'assest/rule.png'
 import { Link } from "react-router-dom";
   
 export class Rule extends Component {
@@ -23,7 +24,9 @@ render() {
     <div className={style.RuleBox}>
         <div className={style.RuleDetialBox}>
             <div className={style.Tittle} style={{backgroundImage:'url('+button+')'}}>活动规则</div>
-            <div className={style.Detial}></div>
+            <div className={style.Detial}>
+              <img src={rule} className={style.rulepng} alt=""/>
+            </div>
             <Link to='/home'><div className={style.ReturnButton}>返回</div></Link>
         </div>
     </div>
