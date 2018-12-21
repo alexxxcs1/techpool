@@ -20,15 +20,26 @@ export class Login extends Component {
     this.refreshProps = this.refreshProps.bind(this);
     this.handleSexValue = this.handleSexValue.bind(this);
     this.HandleSubmit = this.HandleSubmit.bind(this);
+    this.onInputBlur = this.onInputBlur.bind(this);
   }
   componentWillReceiveProps(nextprops) {
     this.refreshProps(nextprops);
   }
   componentDidMount() {
     this.refreshProps(this.props);
+    this.getUserInfo();
   }
   refreshProps(props) {
-    this.getUserInfo();
+    
+  }
+  onInputBlur() {
+    var scrollTop =
+      document.documentElement.scrollTop ||
+      window.pageYOffset ||
+      document.body.scrollTop;
+    document.documentElement.scrollTop = 0;
+    window.pageYOffset = 0;
+    document.body.scrollTop = 0;
   }
   getUserInfo() {
     api.getUserInfo().then(
@@ -47,9 +58,8 @@ export class Login extends Component {
     );
   }
   HandleSubmit() {
-    console.log(this.state.name, this.state.sex, this.state.wid);
-
     if (this.state.name && this.state.sex && this.state.wid) {
+      let self = this;
       api
         .setUserReg(
           this.state.name,
@@ -57,13 +67,17 @@ export class Login extends Component {
           this.state.wid
         )
         .then(res => {
-          console.log(res);
           if (res.code == 200) {
+              console.log(res);
+              
+            window.location.reload();
           } else {
             this.context.alert({
               show: true,
               value: res.message,
-              callback: () => {}
+              callback: () => {
+                
+              }
             });
           }
         });
@@ -101,6 +115,7 @@ export class Login extends Component {
                 type="text"
                 className={style.InputVauleDetial}
                 onChange={this.InputChange.bind(this, "name")}
+                onBlur={this.onInputBlur}
               />
             </div>
           </div>
@@ -111,6 +126,7 @@ export class Login extends Component {
                 placeholder={""}
                 value={this.state.sex}
                 onSelect={this.handleSexValue.bind(this)}
+                onBlur={this.onInputBlur}
               />
             </div>
           </div>
@@ -121,6 +137,7 @@ export class Login extends Component {
                 type="text"
                 className={style.InputVauleDetial}
                 onChange={this.InputChange.bind(this, "wid")}
+                onBlur={this.onInputBlur}
               />
             </div>
           </div>

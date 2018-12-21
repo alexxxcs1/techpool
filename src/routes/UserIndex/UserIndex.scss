@@ -8,7 +8,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    .ReturnButton {
+        width: 104px;
+        height: 34px;
+        margin: 20px 0px;
+        background: #fff;
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
     .UserBox {
         width: 561px;
         // height: 506px;

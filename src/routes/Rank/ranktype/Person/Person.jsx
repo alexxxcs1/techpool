@@ -54,21 +54,21 @@ export class Person extends Component {
     ) {
       return (
         <div className={style.RowBase}>
-          <div className={style.ColumnBase} style={{ width: "33%" }}>
+          <div className={style.ColumnBase} style={{ width: "23%" }}>
             <div
               className={style.RowIcon}
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               第{itemBase.rank}名
             </div>
           </div>
-          <div className={style.ColumnBase} style={{ width: "33%" }}>
+          <div className={style.ColumnBase} style={{ width: "53%" }}>
             <div
               className={style.RowIcon}
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
-              {itemBase.username}
+              {itemBase.username}({itemBase.regionid})
             </div>
           </div>
-          <div className={style.ColumnBase} style={{ width: "33%" }}>
+          <div className={style.ColumnBase} style={{ width: "23%" }}>
             <div
               className={style.RowIcon}
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
@@ -102,7 +102,7 @@ export class Person extends Component {
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>
-                姓名
+                姓名 <span className={style.smtext}>(所属大区)</span>
               </div>
             </div>
             <div className={style.ColumnBase} style={{ width: "33%" }}>

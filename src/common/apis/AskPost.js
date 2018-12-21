@@ -23,6 +23,7 @@ const AskPost = (ajaxinstance) => {
     customer.getQuestion = () => {
         return ajaxinstance.post('index/getQuestion');
     }
+    //答完题提交签到
     customer.answerAllQuestion = () => {
         return ajaxinstance.post('index/addQuestion');
     }
@@ -41,6 +42,25 @@ const AskPost = (ajaxinstance) => {
     customer.getRegionRank = () => {
         return ajaxinstance.post('index/getRegionRank');
     }
+    
+    //是否授权
+    customer.isAuth = () => {
+        return ajaxinstance.post('Login/isLogin');
+    }
+    //获取授权地址
+    customer.getAuthUrl = (url) => {
+        return ajaxinstance.post('weixin/authurl',qs.stringify({
+            url
+        }));
+    }
+    customer.getShare = (url) => {
+        return ajaxinstance.post('weixin/getshare',qs.stringify({
+            url
+        }));
+    }
+    
+    
+
     return customer
 }
 

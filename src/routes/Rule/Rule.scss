@@ -10,7 +10,7 @@
     align-items: center;
 
     .RuleDetialBox {
-        width: 519px;
+        width: 648px;
 
         overflow: auto;
         border-radius: 9px;
@@ -34,7 +34,7 @@
 
         .Detial {
             margin: 15px 0;
-            width: 422px;
+            width: 648px;
             min-height: 320px;
             max-height: 600px;
             overflow-y: auto;
@@ -46,6 +46,7 @@
         .ReturnButton {
             width: 104px;
             height: 34px;
+            margin: 10px 0px;
             background: #fff;
             border-radius: 2px;
             display: flex;

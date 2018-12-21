@@ -18,6 +18,7 @@ import bkg1 from "assest/bkg1.png";
 import AlertBox from "components/AlertBox";
 import AuthBox from "components/AuthBox";
 import TopNav from "components/TopNav";
+import PicView from "components/PicView";
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +31,12 @@ class App extends Component {
         show: false,
         value: "信息输入有错误，请重新输入",
         callback: this.HandleAlertCallbackIntercept.bind(this, () => {})
+      },
+      PicViewOption: {
+        show: false,
+        url:
+          "http://h5.rup-china.com/techpool/public/index/request/KLK20181226-4.png",
+        callback: this.HandlePicViewCallbackIntercept.bind(this, () => {})
       }
     };
     this.getChildContext = this.getChildContext.bind(this);
@@ -41,15 +48,31 @@ class App extends Component {
     this.setUserInfo = this.setUserInfo.bind(this);
     this.returnBkg = this.returnBkg.bind(this);
     this.HandleBkg = this.HandleBkg.bind(this);
+    this.HandlePicView = this.HandlePicView.bind(this);
   }
   componentDidMount() {
     console.log(window.location.hash);
+    document.body.addEventListener(
+      "touchmove",
+      function(e) {
+        e.preventDefault();
+      },
+      false
+    );
+    document.body.addEventListener(
+      "ondragstart",
+      function(e) {
+        return false;
+      },
+      false
+    );
   }
   getChildContext() {
     return {
       getUserInfo: this.getUserInfo,
       setUserInfo: this.setUserInfo,
       alert: this.HandleAlertOption,
+      PicView: this.HandlePicView,
       BKG: this.HandleBkg
     };
   }
@@ -88,9 +111,27 @@ class App extends Component {
         break;
     }
   }
+  HandlePicView(option) {
+    this.state.PicViewOption = option;
+    this.state.PicViewOption.callback = this.HandlePicViewCallbackIntercept.bind(
+      this,
+      this.state.AlertOption.callback
+    );
+    this.setState(this.state);
+  }
+  HandlePicViewCallbackIntercept(callback) {
+    this.state.PicViewOption.show = false;
+    callback();
+    this.setState(this.state);
+  }
   render() {
     return (
       <div style={{ height: "100%" }}>
+        {this.state.PicViewOption.show ? (
+          <PicView option={this.state.PicViewOption} />
+        ) : (
+          ""
+        )}
         {this.state.AlertOption.show ? (
           <AlertBox option={this.state.AlertOption} />
         ) : (
@@ -98,10 +139,9 @@ class App extends Component {
         )}
         {window.location.hash != "#/login" ? <TopNav /> : ""}
         <HashRouter>
-          <div style={{ height: "100%"}}>
+          <div style={{ height: "100%" }}>
             <Switch>
               {/* 登录绑定 */}
-
               <Route path="/login" component={Login} />
               {/* 答题 */}
               <Route path="/answer" component={Answer} />
@@ -121,7 +161,10 @@ class App extends Component {
               {/* 404页面 */}
               <Route component={NotFound} />
             </Switch>
-            <AuthBox user={this.state.UserInfo} />
+            <AuthBox
+              user={this.state.UserInfo}
+              timestamp={new Date().getTime()}
+            />
           </div>
         </HashRouter>
         {this.returnBkg()}
@@ -131,6 +174,7 @@ class App extends Component {
 }
 App.childContextTypes = {
   alert: PropTypes.func,
+  PicView: PropTypes.func,
   getUserInfo: PropTypes.func,
   setUserInfo: PropTypes.func,
   BKG: PropTypes.func

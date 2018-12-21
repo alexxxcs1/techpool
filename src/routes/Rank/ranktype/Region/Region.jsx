@@ -11,12 +11,15 @@ export class Region extends Component {
     super(props);
     this.state = {
       userInfo: null,
-      cate:'KLK',
-      rankdata: null
+      cate: "KLK",
+      rankdata: null,
+      role:1,
     };
     this.refreshProps = this.refreshProps.bind(this);
     this.getRankData = this.getRankData.bind(this);
     this.createRank = this.createRank.bind(this);
+    this.createCateButton = this.createCateButton.bind(this);
+    this.HandleCate = this.HandleCate.bind(this);
   }
   componentWillReceiveProps(nextprops) {
     this.refreshProps(nextprops);
@@ -28,8 +31,32 @@ export class Region extends Component {
   refreshProps(props) {
     if (props.userinfo == null) return;
     this.state.userInfo = props.userinfo;
+    this.state.role =  props.userinfo.role;
     this.state.cate =
       props.userinfo.role == 1 ? props.userinfo.cate : this.state.cate;
+    this.setState(this.state);
+    
+  }
+  createCateButton() {
+    if (this.state.userInfo == null || this.state.rankdata == null) return;
+    let itemNodes = [];
+    for (const key in this.state.rankdata) {
+      itemNodes.push(
+        <div
+          className={[
+            style.cateButton,
+            this.state.cate == key ? style.actbutton : ""
+          ].join(" ")}
+          onClick={this.HandleCate.bind(this, key)}>
+          {key}
+        </div>
+      );
+    }
+    return itemNodes;
+  }
+  HandleCate(cate) {
+    this.state.cate = cate;
+    this.getRankData(null, this.state.cate);
     this.setState(this.state);
   }
   getRankData() {
@@ -43,7 +70,7 @@ export class Region extends Component {
     });
   }
   createRank() {
-    if (this.state.rankdata==null||this.state.cate==null) return;
+    if (this.state.rankdata == null || this.state.cate == null) return;
     var cont = this;
     var itemNodes = this.state.rankdata[this.state.cate].map(function(
       itemBase,
@@ -80,6 +107,7 @@ export class Region extends Component {
   render() {
     return (
       <div className={style.Box}>
+        {this.state.role == 2?<div className={style.cateGroupBox}>{this.createCateButton()}</div>:''}
         <div
           className={style.Tittle}
           style={{ backgroundImage: "url(" + button + ")" }}>

@@ -27,7 +27,7 @@ render() {
             <div className={style.Detial}>
               <img src={rule} className={style.rulepng} alt=""/>
             </div>
-            <Link to='/home'><div className={style.ReturnButton}>返回</div></Link>
+            <Link to='/'><div className={style.ReturnButton}>返回</div></Link>
         </div>
     </div>
    )

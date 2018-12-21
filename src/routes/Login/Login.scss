@@ -12,16 +12,19 @@
     position: relative;
 
 
-    .sloganBox{
+    .sloganBox {
         width: 569px;
         height: 502px;
-        img{
+
+        img {
             width: 100%;
         }
     }
+
     .LoginInfoBox {
         width: 396px;
         height: 244px;
+        flex-shrink: 0;
         background: #fff;
         border-radius: 12px;
 
@@ -68,7 +71,8 @@
             }
         }
     }
-    .LoginButton{
+
+    .LoginButton {
         width: 174px;
         height: 71px;
         // background: #000;

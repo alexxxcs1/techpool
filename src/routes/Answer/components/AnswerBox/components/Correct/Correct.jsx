@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import style from "./Correct.scss";
 import DarkBox from "components/DarkBox";
 
+
 export class Correct extends Component {
   constructor(props) {
     super(props);
@@ -41,4 +42,5 @@ export class Correct extends Component {
     );
   }
 }
+
 export default Correct;

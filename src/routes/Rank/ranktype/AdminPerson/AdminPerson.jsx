@@ -37,10 +37,10 @@ export class AdminPerson extends Component {
       props.userinfo.role == 1 ? props.userinfo.cate : this.state.cate;
     this.setState(this.state);
   }
-  getRankData(regionid,cate) {
-    api.getAdminPersonRank(regionid,cate).then(res => {
+  getRankData(regionid, cate) {
+    api.getAdminPersonRank(regionid, cate).then(res => {
       if (res.code == 200) {
-        this.state.cate = res.result.cate;
+        // this.state.cate = res.result.cate;
         this.state.regionid = res.result.regionid;
         this.state.rankdata = res.result.list;
         this.state.regiondata = res.result.region;
@@ -69,13 +69,13 @@ export class AdminPerson extends Component {
               {itemBase.username}
             </div>
           </div>
-          <div className={style.ColumnBase} style={{ width: "25%" }}>
+          {cont.state.regionid==0?'':<div className={style.ColumnBase} style={{ width: "25%" }}>
             <div
               className={style.RowIcon}
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
-              {itemBase.username}
+              第{itemBase.region_rank}名
             </div>
-          </div>
+          </div>}
           <div className={style.ColumnBase} style={{ width: "25%" }}>
             <div
               className={style.RowIcon}
@@ -107,14 +107,14 @@ export class AdminPerson extends Component {
   }
   HandleCate(cate) {
     this.state.cate = cate;
-    this.getRankData(null,this.state.cate);
+    this.getRankData(null, this.state.cate);
     this.setState(this.state);
   }
   createRegionButton() {
     if (this.state.userInfo == null || this.state.regiondata == null) return;
 
     var cont = this;
-    var itemNodes = this.state.regiondata[this.state.cate].map(function(
+    var itemNodes = this.state.regiondata.map(function(
       itemBase,
       index
     ) {
@@ -133,13 +133,48 @@ export class AdminPerson extends Component {
   }
   HandleRegion(regionid) {
     this.state.regionid = regionid;
-    this.getRankData(this.state.regionid,null);
+    this.getRankData(this.state.regionid, this.state.cate);
+    this.setState(this.state);
+  }
+  getTotalData(){
+    api.getPersonRank().then(res => {
+      if (res.code == 200) {
+        console.log(res);
+        
+        this.state.rankdata = res.result[this.state.cate];
+      } else {
+        alert(res.message);
+      }
+      this.setState(this.state);
+    });
+  }
+  HandleTotalRank(regionid){
+    this.state.regionid = regionid;
+    this.getTotalData()
     this.setState(this.state);
   }
   render() {
     return [
       <div className={style.Box}>
-        <div className={style.cateGroupBox}>{this.createCateButton()}</div>
+        <div className={style.cateGroupBox}>
+        {/* {this.createCateButton()} */}
+        <div
+          className={[
+            style.cateButton,
+            this.state.cate == 'KLK' ? style.actbutton : ""
+          ].join(" ")}
+          onClick={this.HandleCate.bind(this, 'KLK')}>
+          KLK
+        </div>
+        <div
+          className={[
+            style.cateButton,
+            this.state.cate == 'UTI' ? style.actbutton : ""
+          ].join(" ")}
+          onClick={this.HandleCate.bind(this, 'UTI')}>
+          UTI
+        </div>
+        </div>
         <div
           className={style.Tittle}
           style={{ backgroundImage: "url(" + button + ")" }}>
@@ -147,6 +182,14 @@ export class AdminPerson extends Component {
         </div>
         <div className={style.RegionButtonGroup}>
           {this.createRegionButton()}
+          {/* <div
+            onClick={this.HandleTotalRank.bind(this, null)}
+            className={[
+              style.RegionButton,
+              this.state.regionid == null ? style.actRegionButton : ""
+            ].join(" ")}>
+            总榜
+          </div> */}
         </div>
         <div className={style.TabbleBody}>
           <div className={style.RowBase}>
@@ -154,7 +197,7 @@ export class AdminPerson extends Component {
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>
-                排名
+                {this.state.regionid==0?'总排名':'个人排名'}
               </div>
             </div>
             <div className={style.ColumnBase} style={{ width: "25%" }}>
@@ -164,13 +207,13 @@ export class AdminPerson extends Component {
                 姓名
               </div>
             </div>
-            <div className={style.ColumnBase} style={{ width: "25%" }}>
+            {this.state.regionid==0?'':<div className={style.ColumnBase} style={{ width: "25%" }}>
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>
-                大区
+                总排名
               </div>
-            </div>
+            </div>}
             <div className={style.ColumnBase} style={{ width: "25%" }}>
               <div
                 className={style.HeadIcon}

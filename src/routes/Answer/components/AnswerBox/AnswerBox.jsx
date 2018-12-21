@@ -129,7 +129,7 @@ export class AnswerBox extends Component {
           ""
         )}
         {this.state.result == 0 ? (
-          <Wrong onClose={this.HandleCloseResult.bind(this, 0)} />
+          <Wrong onClose={this.HandleCloseResult.bind(this, 0)} tips={this.state.data[this.state.steep].imgurl}/>
         ) : (
           ""
         )}

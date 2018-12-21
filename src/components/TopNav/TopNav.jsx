@@ -19,6 +19,7 @@ export class TopNav extends Component {
   }
   componentDidMount() {
     this.refreshProps(this.props);
+    console.log(window.location.hash);
   }
   refreshProps(props) {
     this.state.userinfo = this.context.getUserInfo();
@@ -33,15 +34,15 @@ export class TopNav extends Component {
         <img src={logotop} className={style.logotop} alt="" />
         {this.state.userinfo ? (
           <div className={style.HandleGroupButton}>
-            <div
+           <div
               className={style.ButtonGroup}
               style={{ justifyContent: "flex-start" }}>
-              <div
+              {window.location.hash == '#/'?'':<div
                 className={style.Button}
                 onClick={this.JumpUrl.bind(this, "/")}>
                 <img src={returnbutton} className={style.iconbase} alt="" />
                 返回首页
-              </div>
+              </div>}
             </div>
             <div
               className={style.ButtonGroup}
