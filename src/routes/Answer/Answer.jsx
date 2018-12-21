@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import style from "./Answer.scss";
 
 import AnswerBox from "./components/AnswerBox";
 import RuleBox from "./components/RuleBox";
 import PropTypes from "prop-types";
 import QuestionComplete from "assest/QuestionComplete.png";
-import {api} from 'common/app'
+import { api } from "common/app";
 
 export class Answer extends Component {
   constructor(props) {
@@ -28,10 +28,9 @@ export class Answer extends Component {
   }
   componentDidMount() {
     this.refreshProps(this.props);
+    this.context.BKG(0);
   }
-  refreshProps(props) {
-    
-  }
+  refreshProps(props) {}
   customRoute() {
     switch (this.state.status) {
       case 0:
@@ -39,7 +38,13 @@ export class Answer extends Component {
       case 1:
         return <AnswerBox />;
       case 2:
-        return [<img className={style.Complete} src={QuestionComplete} />, <Link to='/'> <div className={style.ReturnIndex}>返回首页</div> </Link>];
+        return [
+          <img className={style.Complete} src={QuestionComplete} />,
+          <Link to="/">
+            {" "}
+            <div className={style.ReturnIndex}>返回首页</div>{" "}
+          </Link>
+        ];
     }
   }
   setRouteStatus(status) {
@@ -51,6 +56,9 @@ export class Answer extends Component {
   }
 }
 Answer.childContextTypes = {
-  setRouteStatus: PropTypes.func
+  setRouteStatus: PropTypes.func,
+};
+Answer.contextTypes = {
+  BKG: PropTypes.func
 };
 export default Answer;

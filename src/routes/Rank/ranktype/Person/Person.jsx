@@ -53,10 +53,11 @@ export class Person extends Component {
       index
     ) {
       return (
-        <div className={style.RowBase}>
-          <div className={style.ColumnBase} style={{ width: "23%" }}>
+        <div className={style.RowBase} scroll='true'>
+          <div className={style.ColumnBase} style={{ width: "23%" }} scroll='true'>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               第{itemBase.rank}名
             </div>
@@ -64,6 +65,7 @@ export class Person extends Component {
           <div className={style.ColumnBase} style={{ width: "53%" }}>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               {itemBase.username}({itemBase.regionid})
             </div>
@@ -71,6 +73,7 @@ export class Person extends Component {
           <div className={style.ColumnBase} style={{ width: "23%" }}>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               {itemBase.score}积分
             </div>

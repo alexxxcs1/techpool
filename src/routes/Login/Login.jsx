@@ -14,13 +14,14 @@ export class Login extends Component {
     super(props);
     this.state = {
       name: null,
-      sex: null,
+      sex: 1,
       wid: null
     };
     this.refreshProps = this.refreshProps.bind(this);
     this.handleSexValue = this.handleSexValue.bind(this);
     this.HandleSubmit = this.HandleSubmit.bind(this);
     this.onInputBlur = this.onInputBlur.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
   }
   componentWillReceiveProps(nextprops) {
     this.refreshProps(nextprops);
@@ -63,7 +64,7 @@ export class Login extends Component {
       api
         .setUserReg(
           this.state.name,
-          this.state.sex == "男" ? 1 : 2,
+          this.state.sex,
           this.state.wid
         )
         .then(res => {
@@ -101,6 +102,10 @@ export class Login extends Component {
     this.state[type] = e.target.value;
     this.setState(this.state);
   }
+  onSelectChange(e){
+    this.state.sex = e.target.value;
+    this.setState(this.state);
+  }
   render() {
     return (
       <div className={style.LoginBox}>
@@ -122,12 +127,16 @@ export class Login extends Component {
           <div className={style.InputBox}>
             <div className={style.InputTitle}>性别：</div>
             <div className={style.InputValue}>
-              <CitySelect
+              <select className={style.SelectBox}  onBlur={this.onInputBlur} onChange={this.onSelectChange} >
+                <option value="1">男</option>
+                <option value="2">女</option>
+              </select>
+              {/* <CitySelect
                 placeholder={""}
                 value={this.state.sex}
                 onSelect={this.handleSexValue.bind(this)}
                 onBlur={this.onInputBlur}
-              />
+              /> */}
             </div>
           </div>
           <div className={style.InputBox}>

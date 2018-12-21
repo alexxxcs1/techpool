@@ -10,6 +10,16 @@
     justify-content: center;
     align-items: center;
     pointer-events: none;
+
+    .musicicon {
+        width: 63px;
+        height: 63px;
+    }
+
+    .actmusicicon {
+        animation: rotate 10s infinite;
+    }
+
     .logotop {
         width: 708px;
         margin-top: 38px;
@@ -23,13 +33,15 @@
         justify-content: center;
         align-items: center;
 
+
+
         .ButtonGroup {
             width: 50%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            
+
             .Button {
                 margin: 38px;
                 // width: 43px;
@@ -40,6 +52,7 @@
                 align-items: center;
                 color: #959fac;
                 pointer-events: all;
+
                 .iconbase {
                     width: 43px;
                     height: 43px;
@@ -48,5 +61,15 @@
 
 
         }
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

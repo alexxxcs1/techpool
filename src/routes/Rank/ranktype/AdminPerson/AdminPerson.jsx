@@ -54,31 +54,35 @@ export class AdminPerson extends Component {
     var cont = this;
     var itemNodes = this.state.rankdata.map(function(itemBase, index) {
       return (
-        <div className={style.RowBase}>
-          <div className={style.ColumnBase} style={{ width: "25%" }}>
+        <div className={style.RowBase} scroll='true'>
+          <div className={style.ColumnBase} style={{ width: "20%" }} scroll='true'>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               第{itemBase.rank}名
             </div>
           </div>
-          <div className={style.ColumnBase} style={{ width: "25%" }}>
+          <div className={style.ColumnBase} style={{ width:cont.state.regionid==0? "50%":"20%" }}>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
-              {itemBase.username}
+              {itemBase.username}{cont.state.regionid==0?'('+itemBase.regionid+')':''}
             </div>
           </div>
-          {cont.state.regionid==0?'':<div className={style.ColumnBase} style={{ width: "25%" }}>
+          {cont.state.regionid==0?'':<div className={style.ColumnBase} style={{ width: "40%" }}>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               第{itemBase.region_rank}名
             </div>
           </div>}
-          <div className={style.ColumnBase} style={{ width: "25%" }}>
+          <div className={style.ColumnBase} style={{ width: "20%" }}>
             <div
               className={style.RowIcon}
+              scroll='true'
               style={{ backgroundImage: "url(" + tablerowicon + ")" }}>
               {itemBase.score}积分
             </div>
@@ -139,8 +143,6 @@ export class AdminPerson extends Component {
   getTotalData(){
     api.getPersonRank().then(res => {
       if (res.code == 200) {
-        console.log(res);
-        
         this.state.rankdata = res.result[this.state.cate];
       } else {
         alert(res.message);
@@ -193,28 +195,28 @@ export class AdminPerson extends Component {
         </div>
         <div className={style.TabbleBody}>
           <div className={style.RowBase}>
-            <div className={style.ColumnBase} style={{ width: "25%" }}>
+            <div className={style.ColumnBase} style={{ width: "20%" }}>
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>
-                {this.state.regionid==0?'总排名':'个人排名'}
+                {this.state.regionid==0?'总排名':'区排名'}
               </div>
             </div>
-            <div className={style.ColumnBase} style={{ width: "25%" }}>
+            <div className={style.ColumnBase} style={{ width: "20%" }}>
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>
                 姓名
               </div>
             </div>
-            {this.state.regionid==0?'':<div className={style.ColumnBase} style={{ width: "25%" }}>
+            {this.state.regionid==0?'':<div className={style.ColumnBase} style={{ width: "40%" }}>
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>
                 总排名
               </div>
             </div>}
-            <div className={style.ColumnBase} style={{ width: "25%" }}>
+            <div className={style.ColumnBase} style={{ width: "20%" }}>
               <div
                 className={style.HeadIcon}
                 style={{ backgroundImage: "url(" + tableheadicon + ")" }}>

@@ -2,27 +2,27 @@ import axios from 'axios'
 
 import AskPost from './AskPost'
 
-const host = 'http://h5.rup-china.com/techpool/index.php/index/'
+
+let ol = 'http://h5.rup-china.com/techpool/index.php/index/'
+let cm = 'http://192.168.1.12/tianpu/index.php/index/'
+const host = ol;
 
 // 实例化 ajax请求对象
 const ajaxinstance = axios.create({
   baseURL: host,
-  timeout: 5000,
+  timeout: 50000,
   // withCredentials: true,
   headers: {
     // responseType: 'JSON',
     // 'Content-Type': 'application/json'
   }
 })
-
 // 添加拦截器，处理 公用请求参数，和通用请求头部
 ajaxinstance
   .interceptors
   .request
   .use((config) => {
     // TODO
-    console.log(config);
-    
     return config
   }, (error) => {
     Promise.reject(error)

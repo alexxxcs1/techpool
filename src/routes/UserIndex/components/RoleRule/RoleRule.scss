@@ -1,13 +1,13 @@
 .RoleRuleBox {
     width: 650px;
     // height: 375px;
+    padding-bottom: 100px;
     background: #fff;
     border-radius: 5px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -20,9 +20,9 @@
         height: 105%;
         background: rgba($color: #fff, $alpha: 0.5);
         border-radius: 5px;
-        bottom: 0;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(-50%);
         z-index: -1;
     }
 

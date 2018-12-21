@@ -51,11 +51,16 @@ class App extends Component {
     this.HandlePicView = this.HandlePicView.bind(this);
   }
   componentDidMount() {
-    console.log(window.location.hash);
     document.body.addEventListener(
       "touchmove",
       function(e) {
-        e.preventDefault();
+        if (e.target.getAttribute('scroll')=='true') {//检测不锁滑动的标签
+          //do nothing
+        }else{
+          //没有不锁滑动标签的则禁止滑动
+          e.preventDefault();
+        }
+        
       },
       false
     );
@@ -137,7 +142,7 @@ class App extends Component {
         ) : (
           ""
         )}
-        {window.location.hash != "#/login" ? <TopNav /> : ""}
+        <TopNav />
         <HashRouter>
           <div style={{ height: "100%" }}>
             <Switch>

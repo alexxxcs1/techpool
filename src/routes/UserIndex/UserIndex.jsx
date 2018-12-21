@@ -25,6 +25,7 @@ export class UserIndex extends Component {
     this.refreshProps(nextprops);
   }
   componentDidMount() {
+    this.context.BKG(0);
     this.refreshProps(this.props);
     if (this.props.match.params.route) {
       switch (this.props.match.params.route) {
@@ -108,13 +109,14 @@ export class UserIndex extends Component {
         ) : (
           ""
         )}
-        <Link to='/'><div className={style.ReturnButton}>返回</div></Link>
+        <Link to='/'><div className={style.ReturnButton}>返回首页</div></Link>
       </div>
     );
   }
 }
 UserIndex.contextTypes = {
   getUserInfo: PropTypes.func,
-  setUserInfo: PropTypes.func
+  setUserInfo: PropTypes.func,
+  BKG: PropTypes.func,
 };
 export default UserIndex;
