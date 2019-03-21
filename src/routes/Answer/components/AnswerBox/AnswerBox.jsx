@@ -14,7 +14,7 @@ export class AnswerBox extends Component {
       result: null,
       data: [],
       steep: 0,
-      UserAnswer: [null, null, null, null]
+      UserAnswer: [[], [], [], []]
     };
     this.refreshProps = this.refreshProps.bind(this);
     this.HandleSelectOption = this.HandleSelectOption.bind(this);
@@ -33,7 +33,20 @@ export class AnswerBox extends Component {
     
   }
   HandleSelectOption(OptionID) {
-    this.state.UserAnswer[this.state.steep] = OptionID;
+    if (this.state.data[this.state.steep].type === 'checkbox') {
+        if (this.state.UserAnswer[this.state.steep].includes(OptionID)) {
+          console.log('splice');
+          
+          this.state.UserAnswer[this.state.steep].splice(this.state.UserAnswer[this.state.steep].indexOf(OptionID),1);
+        }else{
+          console.log('asd');
+          
+          this.state.UserAnswer[this.state.steep].push(OptionID);
+        }
+    }else{
+      this.state.UserAnswer[this.state.steep] = [OptionID];
+      
+    }
     this.setState(this.state);
   }
   HandleSteep() {
@@ -44,24 +57,32 @@ export class AnswerBox extends Component {
         callback: () => {}
       });
     } else {
-      if (
-        this.state.UserAnswer[this.state.steep] ==
-        this.state.data[this.state.steep].success
-      ) {
-          if (this.state.steep +1 == this.state.data.length) {
-            api.answerAllQuestion()
+      let qid = this.state.data[this.state.steep].id;
+      let answer = '';
+      this.state.UserAnswer[this.state.steep].forEach((value)=>{answer+=value});
+      let rightanswer = this.state.data[this.state.steep].success;
+      api.answerAllQuestion(qid,answer).then(res=>{
+        if (res.code === 200) {
+          if (answer === this.state.data[this.state.steep].success) {
+              this.state.result = 1;
+          } else {
+            this.state.result = 0;
           }
-          this.state.result = 1;
-      } else {
-        this.state.result = 0;
-      }
+        }else{
+          alert(res.message);
+        }
+        this.setState(this.state);
+      },err=>{
+        alert('服务器错误,请稍后重试');
+      })
+      
     }
     this.setState(this.state);
   }
   getQuestData() {
     api.getQuestion().then(res=>{
       if (res.code == 200) {
-        this.state.data = res.result.question;
+        this.state.data = res.result;
         this.setState(this.state);
       }else{
         this.context.alert({
@@ -93,7 +114,7 @@ export class AnswerBox extends Component {
               <div
                 className={[
                   style.OptionBox,
-                  this.state.UserAnswer[this.state.steep] == key
+                  this.state.UserAnswer[this.state.steep].includes(key)
                     ? style.actOption
                     : ""
                 ].join(" ")}
@@ -111,12 +132,10 @@ export class AnswerBox extends Component {
   }
   HandleCloseResult(type) {
     this.state.result = null;
-    if (type == 1) {
-      if (this.state.steep + 1 == this.state.data.length) {
-        this.context.setRouteStatus(2);
-      } else {
-        this.state.steep += 1;
-      }
+    if (this.state.steep + 1 == this.state.data.length) {
+      this.context.setRouteStatus(2);
+    } else {
+      this.state.steep += 1;
     }
     this.setState(this.state);
   }
@@ -124,12 +143,12 @@ export class AnswerBox extends Component {
     return [
       <div className={style.AnswerBox}>
         {this.state.result == 1 ? (
-          <Correct onClose={this.HandleCloseResult.bind(this, 1)} />
+          <Correct onClose={this.HandleCloseResult.bind(this)} />
         ) : (
           ""
         )}
         {this.state.result == 0 ? (
-          <Wrong onClose={this.HandleCloseResult.bind(this, 0)} tips={this.state.data[this.state.steep].imgurl}/>
+          <Wrong onClose={this.HandleCloseResult.bind(this)} tips={this.state.data[this.state.steep].success}/>
         ) : (
           ""
         )}

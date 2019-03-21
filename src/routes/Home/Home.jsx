@@ -39,12 +39,12 @@ export class Home extends Component {
             onClick={this.changeNavigation.bind(this, "/answer")}>
             天道酬勤
           </div>:''}
-          {this.state.userinfo.role == 1?<div
+          {/* {this.state.userinfo.role == 1?<div
             className={style.Button}
             style={{ backgroundImage: "url(" + button + ")" }}
             onClick={this.changeNavigation.bind(this, "/user/role")}>
             称谓系统
-          </div>:''}
+          </div>:''} */}
           <div
             className={style.Button}
             style={{ backgroundImage: "url(" + button + ")" }}
@@ -57,6 +57,12 @@ export class Home extends Component {
             onClick={this.changeNavigation.bind(this, "/rule")}>
             活动规则
           </div>
+          {this.state.userinfo.role == 1?<div
+            className={style.Button}
+            style={{ backgroundImage: "url(" + button + ")" }}
+            onClick={this.changeNavigation.bind(this, "/user")}>
+            个人中心
+          </div>:''}
         </div>:''}
       </div>
     );

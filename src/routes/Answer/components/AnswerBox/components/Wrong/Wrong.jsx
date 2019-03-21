@@ -28,14 +28,14 @@ export class Wrong extends Component {
     this.props.onClose();
   }
   showTips(){
-    this.props.onClose();
-    this.context.PicView({
-      show:true,
-      url:this.state.tipsurl,
-      callback:()=>{
+    // this.props.onClose();
+    // this.context.PicView({
+    //   show:true,
+    //   url:this.state.tipsurl,
+    //   callback:()=>{
 
-      }
-    })
+    //   }
+    // })
   }
   render() {
     return (
@@ -52,12 +52,12 @@ export class Wrong extends Component {
           </div>
           <div className={style.ResultAnswer}>
             <span>纠错提示：</span>
-            <span onClick={this.showTips}>本题知识点详细解答</span>
-            <div className={style.clickicon}>
+            <span >本题正确答案选择 {this.state.tipsurl}</span>
+            {/* <div className={style.clickicon}>
              点击 <img src={clickicon} className={style.icon} alt=""/>
-            </div>
+            </div> */}
           </div>
-          <div className={style.NextButton} onClick={this.next}>重新答题</div>
+          <div className={style.NextButton} onClick={this.next}>下一题</div>
         </div>
       </DarkBox>
     );

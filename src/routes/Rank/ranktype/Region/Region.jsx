@@ -72,7 +72,7 @@ export class Region extends Component {
   createRank() {
     if (this.state.rankdata == null || this.state.cate == null) return;
     var cont = this;
-    var itemNodes = this.state.rankdata[this.state.cate].map(function(
+    var itemNodes = this.state.rankdata.map(function(
       itemBase,
       index
     ) {
@@ -107,7 +107,7 @@ export class Region extends Component {
   render() {
     return (
       <div className={style.Box}>
-        {this.state.role == 2?<div className={style.cateGroupBox}>{this.createCateButton()}</div>:''}
+        {/* {this.state.role == 2?<div className={style.cateGroupBox}>{this.createCateButton()}</div>:''} */}
         <div
           className={style.Tittle}
           style={{ backgroundImage: "url(" + button + ")" }}>

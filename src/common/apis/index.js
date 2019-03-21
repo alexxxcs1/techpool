@@ -3,8 +3,8 @@ import axios from 'axios'
 import AskPost from './AskPost'
 
 
-let ol = 'http://h5.rup-china.com/techpool/index.php/index/'
-let cm = 'http://192.168.1.12/tianpu/index.php/index/'
+let ol = 'http://h5.rup-china.com/techpool2019/public/index.php/index/'
+let cm = 'http://192.168.1.153/tianpu/index.php/index/'
 const host = ol;
 
 // 实例化 ajax请求对象

@@ -24,8 +24,10 @@ const AskPost = (ajaxinstance) => {
         return ajaxinstance.post('index/getQuestion');
     }
     //答完题提交签到
-    customer.answerAllQuestion = () => {
-        return ajaxinstance.post('index/addQuestion');
+    customer.answerAllQuestion = (qid,checkit) => {
+        return ajaxinstance.post('index/addQuestion',qs.stringify({
+            qid,checkit
+        }));
     }
     //获取个人排行榜
     customer.getPersonRank = () => {

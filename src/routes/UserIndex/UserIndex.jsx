@@ -73,11 +73,11 @@ export class UserIndex extends Component {
               <img src={this.state.userinfo.avatarUrl} alt="" />
             </div>
             <div className={style.UserName}>{this.state.userinfo.username}</div>
-            <div
+            {/* <div
               className={style.UserRole}
               onClick={this.HandleRoleRule.bind(this, true)}>
               {this.state.userinfo.scorename}
-            </div>
+            </div> */}
             <div className={style.UserInfoDetial}>
               <div className={style.DetialTittle}>
                 <img src={pcicon} alt="" />
