@@ -31,10 +31,10 @@ export class AuthBox extends Component {
   setShare() {
     var share_url = window.location.href;
     var share_img =
-      "http://h5.rup-china.com/techpool/public/html/static/media/" +
+      "http://h5.rup-china.com/techpool2019/public/html/static/media/" +
       shareicon.split("/")[3];
-    var share_title = "厉兵秣马  赢战天下";
-    var share_content = "天普brand day 热身赛";
+    var share_title = "每日一练";
+    var share_content = "2019年4月1日-2019年11月30日";
     api.getShare(window.location.href).then(
       response => {
         window.wx.config({

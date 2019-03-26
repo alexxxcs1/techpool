@@ -11,6 +11,7 @@ export class AnswerBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      onAjax:false,
       result: null,
       data: [],
       steep: 0,
@@ -50,10 +51,11 @@ export class AnswerBox extends Component {
     this.setState(this.state);
   }
   HandleSteep() {
-    if (this.state.UserAnswer[this.state.steep] == null) {
+    if(this.state.onAjax) return;
+    if (this.state.UserAnswer[this.state.steep].length === 0) {
       this.context.alert({
         show: true,
-        value: "请选择一个答案！",
+        value: "请选择至少一个答案！",
         callback: () => {}
       });
     } else {
@@ -61,6 +63,7 @@ export class AnswerBox extends Component {
       let answer = '';
       this.state.UserAnswer[this.state.steep].forEach((value)=>{answer+=value});
       let rightanswer = this.state.data[this.state.steep].success;
+      this.state.onAjax = true;
       api.answerAllQuestion(qid,answer).then(res=>{
         if (res.code === 200) {
           if (answer === this.state.data[this.state.steep].success) {
@@ -68,8 +71,12 @@ export class AnswerBox extends Component {
           } else {
             this.state.result = 0;
           }
+          this.state.onAjax = false;
+          this.setState(this.state);
         }else{
           alert(res.message);
+          this.state.onAjax = false;
+          this.setState(this.state);
         }
         this.setState(this.state);
       },err=>{
@@ -101,7 +108,7 @@ export class AnswerBox extends Component {
     let result = [];
     result.push(
       <div className={style.QuestionTittle}>
-        {this.state.data[this.state.steep].title}
+        {this.state.data[this.state.steep].type=='radio'?'(单选题)':'(多选题)'}{this.state.data[this.state.steep].title}
       </div>
     );
     result.push(

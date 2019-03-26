@@ -89,7 +89,7 @@ export class UserIndex extends Component {
                   <div>{this.state.userinfo.regionid}</div>
                 </div>
                 <div className={style.BaseBox}>
-                  <div>{this.state.userinfo.sex}</div>
+                  <div>{this.state.userinfo.sex==1?'男':'女'}</div>
                 </div>
                 <div className={style.BaseBox}>
                   <div>积分</div>
