@@ -66,11 +66,12 @@ export class AnswerBox extends Component {
       this.state.onAjax = true;
       api.answerAllQuestion(qid,answer).then(res=>{
         if (res.code === 200) {
-          if (answer === this.state.data[this.state.steep].success) {
-              this.state.result = 1;
-          } else {
-            this.state.result = 0;
-          }
+          // if (answer === this.state.data[this.state.steep].success) {
+          //     this.state.result = 1;
+          // } else {
+          //   this.state.result = 0;
+          // }
+          this.state.result = res.result;
           this.state.onAjax = false;
           this.setState(this.state);
         }else{
